@@ -22,6 +22,7 @@ $(".btn").click(function () {
   var audio = new Audio(`sounds/${userChosenColour}.mp3`);
   audio.play();
   animatePress(userChosenColour);
+  checkAnswer(userClickedPattern.length);
 });
 
 function nextSequence() {
@@ -40,4 +41,15 @@ function animatePress(currentColour) {
   setTimeout(function () {
     $(`.${currentColour}`).removeClass("pressed");
   }, 100);
+}
+
+function checkAnswer(currentLevel) {
+  if (currentLevel === gamePattern.length) {
+    setTimeout(function () {
+      nextSequence();
+    }, 1000);
+    userClickedPattern = [];
+  } else {
+    console.log("wrong");
+  }
 }
