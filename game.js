@@ -12,6 +12,7 @@ var wrong = new Audio("sounds/wrong.mp3");
 
 $(".btn").click(function () {
   var userChosenColour = this.id;
+  userClickedPattern.push(userChosenColour);
 });
 
 function nextSequence() {
