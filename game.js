@@ -8,6 +8,8 @@ var started = false;
 
 var level = 0;
 
+var gameover = new Audio("sounds/wrong.mp3)");
+
 $(document).keydown(function () {
   if (!started) {
     $("#level-title").text("Level " + level);
@@ -50,6 +52,11 @@ function checkAnswer(currentLevel) {
     }, 1000);
     userClickedPattern = [];
   } else {
-    console.log("wrong");
+    gameover.play();
+    $("body").addClass("game-over");
+    setTimeout(function () {
+      $("body").removeClass("game-over");
+    }, 100);
+    $("h1").text("Game Over, Press Any Key to Restart");
   }
 }
